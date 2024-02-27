@@ -1,0 +1,289 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins, sans-serif;
+}
+
+/* UTILITY CLASSES */
+.buttonDisabled {
+  opacity: 0.7;
+}
+
+.focusRemoved {
+  opacity: 0.5;
+  filter: blur(5px);
+  transition: 200ms ease;
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.settingsSVG.rotateRight{
+  animation: rotateRight 300ms ease-in-out;
+}
+.settingsSVG.rotateLeft{
+  animation: rotateLeft 300ms ease-in-out;
+}
+
+.settingList.settingSelected {
+  color: white;
+  background-color: #121212;
+}
+
+@keyframes rotateRight {
+  100% {transform: rotate(90deg);}
+}
+@keyframes rotateLeft {
+  100% {transform: rotate(-90deg);}
+}
+
+.fadeIn {
+  animation: fadeIn 300ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+button.button {
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 20px;
+  border-radius: 20px;
+  background-color: #121212;
+}
+
+/* GENERAL STYLES */
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #add8e6, #87ceeb);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.gameBoard .canvas {
+  background: hsl(120, 71%, 20%);
+}
+
+.navButtons {
+  display: flex;
+  width: 340px;
+  margin-top: -7px;
+}
+
+.navButtons .arrow {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: rgb(151, 140, 140);
+  border-right: 1px solid white;
+}
+
+.navButtons .arrow:last-child {
+  border-right: none;
+}
+
+.navButtons div.arrow img {
+  width: 100%;
+  height: 50px;
+}
+
+.toolBar {
+  text-align: center;
+  margin-left: 40px;
+}
+
+.toolBar .playerScore {
+  font-size: 50px;
+}
+
+.stateControlBtn button {
+  margin-inline: 5px;
+}
+
+.gameOverPopup {
+  width: 350px;
+  height: 300px;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  text-align: center;
+  padding-top: 100px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.closeGameOver {
+  display: block;
+  margin: 20px auto;
+}
+
+.settingsSVG {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.settingsContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.settingAdjustment {
+  width: 100%;
+  text-align: center;
+
+}
+
+.settingsContainer .sideBar {
+  width: fit-content;
+  height: 100%;
+  border-right: 1px solid #121212;
+  padding: 20px;
+}
+
+.settingsContainer .settingList {
+  width: 184px;
+  height: 52px;
+  border: 1px solid #121212;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+.settingsContainer .settingList:first-child {
+  margin-top: 0;
+}
+
+.settingsContainer .settingList:hover {
+  color: white;
+  background-color: #121212;
+}
+
+.settingAdjustment .snakeSpeed {
+  padding-left: 20px;
+}
+
+.snakeSpeed label {
+  font-size: 18px;
+  display: block;
+}
+
+.snakeSpeed input {
+  margin-top: 10px;
+}
+
+.enableWalls {
+  text-align: center;
+}
+
+.enableWalls p {
+  margin-bottom: 10px;
+}
+
+.enableWalls label {
+  font-weight: 500;
+}
+
+.highScore span {
+  font-weight: 500;
+}
+
+.closeSettings {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.wallsEPopup {
+  position: fixed;
+  bottom: 7%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  background: gray;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.resetHighScore {
+  display: block;
+  margin: 20px auto;
+}
+
+/* Responsive Design */
+@media (max-width: 650px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .gameOverPopup {
+    top: 40%;
+    transform: translate(-50%, -40%);
+  }
+
+  .settingsContainer .sideBar {
+    padding: 15px;
+  }
+
+  .settingsContainer {
+    width: 95%;
+    padding: 10px 0;
+  }
+
+  .settingsContainer .settingList {
+    width: 154px;
+    height: 50px;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .settingAdjustment .snakeSpeed label {
+    font-size: 16px;
+  }
+}

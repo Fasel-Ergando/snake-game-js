@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snake game - JS</title>
+  <link rel="stylesheet" href="CSS/style.css">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="gameBoard">
+      <canvas class="canvas" width="340" height="400"></canvas>
+      <div class="navButtons">
+        <div class="arrow arrowLeft"><img src="Assets/Arrow Left.svg" class="arrowImg" alt="Arrow Left"></div>
+        <div class="arrow arrowUp"><img src="Assets/Arrow Up.svg" class="arrowImg" alt="Arrow Up"></div>
+        <div class="arrow arrowDown"><img src="Assets/Arrow Down.svg" class="arrowImg" alt="Arrow Down"></div>
+        <div class="arrow arrowRight"><img src="Assets/Arrow Right.svg" class="arrowImg" alt="Arrow Right"></div>
+      </div>
+    </div>
+   
+    <div class="toolBar">
+      <div class="playerScore">
+        0
+      </div>
+      <div class="stateControlBtn">
+        <button class="startGame button">Start</button>
+        <button class="resetGame button">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="gameOverPopup fadeIn displayNone">
+    <span>Game Over!</span>
+    <button class="closeGameOver button">OK</button>
+  </div>
+  <div class="userSettings">
+    <div class="settingsSVG" title="ctrl + alt + I">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16">
+        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+      </svg>
+    </div>
+   
+  </div>
+    <div class="settingsContainer fadeIn displayNone">
+      <div class="closeSettings">
+        <svg xmlns="http://www.w3.org/2000/svg" width='15' height="15" viewBox="0 0 16 16" fill="#000000b3"><path d="M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z"/></svg>
+      </div>
+      <div class="sideBar">
+        <div class="settingList settingSelected">snake speed</div>
+        <div class="settingList">Enable Walls</div>
+        <div class="settingList">High Score</div>
+      </div>
+      <div class="settingAdjustment">
+        <div class="snakeSpeed settingDetail">
+          <label for="range">snake speed: <span>Medium</span></label>
+          <input type="range" id="range">
+        </div>
+        <div class="enableWalls settingDetail displayNone">
+          <p>Allows collision with the borders of the canvas</p>
+          
+          <label for="enableWalls">Enable Walls</label>
+          <input type="checkbox" id="enableWalls" checked>
+        </div>
+        <div class="highScore settingDetail displayNone">
+          High Score: <span>0</span>
+          <button class="resetHighScore button">reset</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="wallsEPopup displayNone fadeIn">Walls enabled</div>
+  <script src="JS/main.js"></script>
+</body>
+</html>
